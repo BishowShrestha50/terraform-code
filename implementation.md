@@ -2,7 +2,7 @@
 Introduction
 
 The following document reviews the design decisions and strategies implemented in the Terraform configuration for AWS EKS, emphasizing auto-scaling and load-balancing approaches. The objective was to create a scalable, resilient, and efficient infrastructure for managing Kubernetes workloads.
-Auto-Scaling Strategy
+## Auto-Scaling Strategy
 
 The auto-scaling strategy revolves around the Kubernetes Horizontal Pod Autoscaler (HPA) and EKS managed node groups.
 
@@ -14,7 +14,7 @@ The auto-scaling strategy revolves around the Kubernetes Horizontal Pod Autoscal
 - Configured managed node groups for automatic scaling based on varying demand.
 - Utilized instance types (t3.medium) with adjustable scaling parameters (desired_capacity, max_capacity, min_capacity) in variables.tf to accommodate workload fluctuations.
 
-Load-Balancing Strategy
+## Load-Balancing Strategy
 
 The Load Balancing strategy involves using AWS Load Balancer Controller for efficient ingress traffic management.
 
@@ -26,7 +26,7 @@ The Load Balancing strategy involves using AWS Load Balancer Controller for effi
 - Defined policies and permissions for the Load Balancer Controller via the lb_role module to manage AWS resources for load balancing.
 - Mapped necessary IAM roles (aws-load-balancer-controller) to the aws-load-balancer-controller service account in kubernetes_service_account resource.
 
-Design Rationale
+## Design Rationale
 
 **Auto-Scaling Choice**:
 - The decision to scale based on CPU utilization ensures resource optimization during varying workload conditions. CPU-based scaling allows the cluster to adapt to changing demands efficiently.
