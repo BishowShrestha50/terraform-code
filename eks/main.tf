@@ -5,7 +5,7 @@ provider "aws" {
 
 data "aws_vpc" "vpc"{
   tags = {
-    Name = "my-vpc"  # Replace with your desired tag key-value pair
+    Name = "my-vpc"  
   }
 }
 
@@ -13,12 +13,12 @@ data "aws_vpc" "vpc"{
 
 data "aws_subnet" "private1"{
     tags = {
-    Name = "my-vpc-private-ap-south-1a"  # Replace with your desired tag key-value pair
+    Name = "my-vpc-private-ap-south-1a"  
   }
 }
 data "aws_subnet" "private2"{
     tags = {
-    Name = "my-vpc-private-ap-south-1b"  # Replace with your desired tag key-value pair
+    Name = "my-vpc-private-ap-south-1b"  
   }
 }
 
@@ -55,25 +55,19 @@ module "eks" {
 
  vpc_id                   = data.aws_vpc.vpc.id
  subnet_ids               = [data.aws_subnet.private1.id,data.aws_subnet.private2.id,data.aws_subnet.private3.id]
- # EKS Managed Node Group(s)
+ 
  eks_managed_node_group_defaults = {
      instance_types = ["t3.medium"]
  }
 
  eks_managed_node_groups = {
-    #  blue = {}
      green = {
-    #  min_size     = 1
-    #  max_size     = 10
-    #  desired_size = 1
-
      instance_types = ["t3.medium"]
       scaling_config = {
         desired_size = 1
         max_size     = 10
         min_size     = 1
 
-        # Specify scaling policies
         scaling_policies = [
           {
             name             = "CPUAutoScaler"
@@ -81,7 +75,6 @@ module "eks" {
             cooldown         = 300
             scaling_adjustment = 1
           },
-          # You can define more scaling policies as needed
         ]
       }
      }

@@ -68,12 +68,9 @@ module "lb_role" {
  }
 
  provider "helm" {
-
     kubernetes {
         config_path = "~/.kube/config"
     }
-
-    
  }
 
  provider "kubernetes" {

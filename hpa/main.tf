@@ -1,5 +1,3 @@
-
-
 resource "kubernetes_horizontal_pod_autoscaler" "deploy-hpa" {
   metadata {
     name = "deploy-hpa"
