@@ -1,5 +1,5 @@
 
-# Terraform AWS EKS Cluster, VPC, Load Balancer, and Horizontal Pod Autoscaler
+# Terraform AWS EKS Cluster, VPC, Load Balancer, Route53 and Horizontal Pod Autoscaler
 
 This Terraform project provisions an AWS EKS cluster, VPC, Load Balancer,route53 and sets up a Horizontal Pod Autoscaler (HPA) for autoscaling Kubernetes pods.
 
@@ -48,12 +48,12 @@ The configuration comprises the following files:
 - The configuration includes an HPA for autoscaling Kubernetes pods based on CPU and Memory utilization.
 - Adjust `target_cpu_utilization_percentage`, `min_replicas`, and `max_replicas` in `main.tf` to fine-tune the HPA settings according to your application's requirements.
 
-6. **Route53**:
+7. **Route53**:
 - AWS Route 53 is a scalable and highly available Domain Name System (DNS) web service provided by Amazon Web Services (AWS). It allows you to manage your domain names, route traffic to resources, such as EC2 instances or load balancers, and perform various DNS-related tasks.
 
-7. **Apply Configuration**: Execute `terraform apply` and review the proposed changes. Enter `yes` when prompted to apply the changes.
+8. **Apply Configuration**: Execute `terraform apply` and review the proposed changes. Enter `yes` when prompted to apply the changes.
 
-8. **Apply word-validation**: Apply deployment, service and ingress inside kubernetes folder into eks cluster. Replace the annotation `alb.ingress.kubernetes.io/subnets` with your subnets inside ingress yaml.
+9. **Apply word-validation**: Apply deployment, service and ingress inside kubernetes folder into eks cluster. Replace the annotation `alb.ingress.kubernetes.io/subnets` with your subnets inside ingress yaml.
 
 9. **Clean Up Resources (Optional)**: Run `terraform destroy` to remove the provisioned resources when they are no longer needed. Be cautious as this action is irreversible.
 
