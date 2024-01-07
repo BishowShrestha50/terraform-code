@@ -18,28 +18,3 @@ module "vpc" {
   }
 
 }
-
-  # locals {
-  #   public_subnet_tags = {
-  #     for idx, subnet in module.vpc.public_subnets : "subnet-${idx}" => merge(
-  #       module.vpc.tags,
-  #       {
-  #         Name        = "PublicSubnet-${idx + 1}"
-  #         kubernetes.io/role/elb = "1"
-  #         kubernetes.io/cluster/eks-cluster = "shared"
-  #         Type        = "public"
-  #         # Add any other tags specific to public subnets
-  #       }
-  #     )
-  #   }
-  # }
-
-#   resource "aws_vpc" "main" {
-#   cidr_block = "10.0.0.0/16"
-#   tags = {
-#     Name = "main"
-#   }
-# }
-
-
-
