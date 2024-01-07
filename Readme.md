@@ -53,7 +53,9 @@ The configuration comprises the following files:
 
 7. **Apply Configuration**: Execute `terraform apply` and review the proposed changes. Enter `yes` when prompted to apply the changes.
 
-8. **Clean Up Resources (Optional)**: Run `terraform destroy` to remove the provisioned resources when they are no longer needed. Be cautious as this action is irreversible.
+8. **Apply word-validation**: Apply deployment, service and ingress inside kubernetes folder into eks cluster. Replace the annotation `alb.ingress.kubernetes.io/subnets` with your subnets inside ingress yaml.
+
+9. **Clean Up Resources (Optional)**: Run `terraform destroy` to remove the provisioned resources when they are no longer needed. Be cautious as this action is irreversible.
 
 
 

@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: word-validation
+  namespace: dev
+  labels:
+    app: word-validation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: word-validation
+  template:
+    metadata:
+      labels:
+        app: word-validation
+    spec:
+      containers:
+      - name: word-validation
+        image: bishowshrestha50/word-validation:latest
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 200m
+            memory: 256Mi
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 3
